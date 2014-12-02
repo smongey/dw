@@ -6,6 +6,9 @@
     <title>{{ page.title }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="//use.typekit.net/hbh4hwb.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -21,11 +24,12 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    {% include shared/header.html %}
+    {% include shared/intro.html %}
     {% include shared/nav.html %}
-    {{ content }}
-    {% include shared/footer.html %}
 
+    {{ content }}
+    
+    {% include shared/footer.html %}
     {% include shared/scripts.html %}
     {% include shared/google-analytics.html %}
   </body>

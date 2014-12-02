@@ -1,0 +1,214 @@
+.left {
+	width: 35%;
+	position: absolute;
+	background: transparent;
+	padding-left: 5%;
+	padding: em(100) 0 0 5%;
+
+	&.fixed {
+		.logo {
+			display: none;
+		}
+		position: fixed;
+		top: 0px;
+	}
+	
+}
+
+.logo {
+	position: absolute;
+	top: em(-120);
+	display: block;
+	height: 100px;
+	width: 200px;
+	background: url('../images/logo.png') no-repeat;
+	
+	a {
+		display: block;
+		text-indent: -9999px;
+	}
+		
+	&:after {
+		content: ' ';
+		position: absolute;
+		top: -160px;
+		display: block;
+		background: white;
+		width: 25px;
+		height: 50px;
+		border-top-right-radius: 25px;
+		border-bottom-right-radius: 25px;
+	}
+
+}
+
+
+.side {
+
+	nav {
+		font: 28px/32px $serif;
+	}
+	ul {
+
+		li {
+			padding: em(4) 0 0 0;
+			a {
+				color: black;
+				font-family: $serif;
+				font-size: em(18);
+				letter-spacing: -0.5px;
+				&:hover {
+					color: #666;
+				}
+			}
+		}
+	}
+
+	a.shop {
+
+	}
+
+	ul.sub {
+		padding-left: em(10);
+		li.type {
+			font-style: italic;
+		}
+
+		a {
+
+		}
+		&.hidden {
+			display: none;
+		}
+	}
+
+}
+
+
+#wrap {
+	
+	float: right;
+	width: 65%;
+	//background: yellow;
+	
+	img {
+		opacity: .7 !important;
+	}
+}
+
+
+#intro {
+
+	background: black no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	position: relative;
+
+	height: em(325);
+	
+	h1 {
+		position: absolute;
+		left: 35%;
+		color: white;
+		bottom: em(25);
+		font-size: em(33);
+		font-style: italic;
+		line-height: 1em;
+		letter-spacing: -0.5px;
+	}
+
+	img {
+		opacity: .3;
+	}
+
+}
+
+
+#about {
+	padding: em(100) 20% em(120) 0;
+	h3 {
+		font-family: $serif;
+		font-size: em(33);
+		// line-height: 1.1em;
+	}
+
+}
+
+
+#shop {
+
+}
+
+.book {
+	margin-left: -30%;
+	width: calc(100% + 100px);
+
+	.slides {
+
+		li {
+
+		}
+
+		img {
+
+		}
+	}
+	.info, .buy {
+		padding-left: calc(30% - 30px);
+	}
+
+}
+
+
+.prints {
+	margin-left: -30%;
+	width: calc(100% + 100px);
+
+	.info {
+		padding-left: calc(30% - 30px);
+	}
+
+}
+
+
+.print {
+
+	width: 50%;
+	float: left;
+	position: relative;
+	padding-right: 10px;
+
+	img { 
+		
+
+	}
+
+	.buy {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+
+		span.price {
+
+		}
+
+		a.add {
+
+		}
+	}
+
+}
+
+
+footer {
+	padding: em(50) 0;
+	width: 65%;
+	float: right;
+	background: red;
+
+	span {
+		display: block;
+	}
+}

@@ -21,11 +21,11 @@
  * _page_name.scss      => Styles for page specific elements.
  * ---------------------------------------------------------------------------
  */
+* { margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
 
-.header-primary {}
+$serif: "garamond-premier-pro", Garamond, serif;
 
-.nav-primary {}
-
-.content-primary {}
-
-.footer-primary {}
+h1, h2, h3, h4, h5, a, p, span, li {
+	font-family: $serif;
+	font-weight: normal;
+}
