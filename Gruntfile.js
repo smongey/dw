@@ -276,7 +276,7 @@ module.exports = function (grunt) {
           commit: true,
           push: true,
           message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%',
-          remote: 'git@github.com:smngy/dw.git',
+          remote: 'git@github.com:smongey/dw.git',
           branch: 'gh-pages'
         }
       }
@@ -287,19 +287,19 @@ module.exports = function (grunt) {
           patterns: [
             {
               match: /("|'?)\/?styles\//g,
-              replacement: '$1http://smngy.github.io/dw/styles/'
+              replacement: '$1http://smongey.github.io/dw/styles/'
             },
             {
               match: /("|'?)\/?scripts\//g,
-              replacement: '$1http://smngy.github.io/dw/scripts/'
+              replacement: '$1http://smongey.github.io/dw/scripts/'
             },
             {
               match: /(<a[^>]*href="?)(\/)/g,
-              replacement: '$1http://smngy.github.io/dw/'
+              replacement: '$1http://smongey.github.io/dw/'
             },
             {
               match: /(<form[^>]*action="?)(\/)/g,
-              replacement: '$1http://smngy.github.io/dw/'
+              replacement: '$1http://smongey.github.io/dw/'
             }
           ]
         },
