@@ -184,8 +184,6 @@
 		}
 	}
 
-
-
 	.slidenav {
 		text-indent: -9999px;
 		display: block;
@@ -219,6 +217,11 @@
 
 	.info, .buy {
 		padding-left: calc(30% - 30px);
+
+		h4 {
+			font: 28px/32px $serif;
+		}
+
 	}
 
 }
