@@ -30,7 +30,7 @@
 }
 
 .left {
-	width: 35%;
+	width: em(230);
 	position: absolute;
 	background: transparent;
 	padding-left: 5%;
@@ -183,6 +183,40 @@
 			margin: 0 !important;
 		}
 	}
+
+
+
+	.slidenav {
+		text-indent: -9999px;
+		display: block;
+		width: 50%;
+		height: 100px;
+		position: relative;
+
+		&:hover {
+			cursor: none;
+		}
+
+		&.right {
+			.cursor {
+				@include transform(rotate(0deg));
+			}
+		}
+		.cursor {
+			position: absolute;
+			width: 5px;
+			height: 5px;
+			pointer-events: none;
+			border-left: 17px solid black;
+			border-top: 7px solid transparent;
+			border-bottom: 7px solid transparent;	
+			@include transition(transform ease .2s);
+			@include transform(rotate(180deg));
+		}		
+
+	}
+
+
 	.info, .buy {
 		padding-left: calc(30% - 30px);
 	}

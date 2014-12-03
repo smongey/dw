@@ -28,10 +28,36 @@ $(document).ready(function(){
 		});
 	});
 
+	// $('.slide-next').on('click', function(){
+	// 	$('.slides').slickNext();
+
+	// });
 
 //	$('#intro').css('background-image', headerImages[0])
 
+
 });
+
+
+
+
+$(window).load(function(){
+
+	var sH = $('.slides').outerHeight(),
+		sW = $('.slides').outerWidth();
+
+	l(sW + ' x ' + sH);
+
+
+	$('.slidenav').css({
+		'width' : sW,
+		'height' : sH,
+		'margin-top' : -sH
+	});
+
+});
+
+
 
 
 $('a.shop').on('click', function(e){
@@ -74,11 +100,49 @@ $(window).on('scroll', function(e){
 	// 	'margin-bottom' : num,
 	// 	'opacity' : 1 - num/30
 	// });
+});
 
+$('.slidenav').on('mousemove', function(e){
+	//l(e.clientX + ' ' + e.clientY);
+	$('.cursor').css({
+		'left' : e.offsetX,
+		'top' : e.offsetY
+	});
+	var halfWidth = Math.floor($(this).width() / 2);
 
+	// right arrow if over left side
+	if (e.offsetX > halfWidth) {
+		$(this).addClass('right');
+	} else {
+		$(this).removeClass('right');
+	}
 
 });
 
+$('.slidenav').on('click', function(e){
+	var halfWidth = Math.floor($(this).width() / 2);
+	l(e.offsetX);
+	
+	//if cursor is in the left half run prev slide otherwise run next click
+	
+	if (e.offsetX > halfWidth)  {
+		$('.slides').slickNext();
+	} else {
+		$('.slides').slickPrev();
+	}
+});
+
+
+
+$('.slidenav').on('mouseenter', function(){
+	var ball = '<div class="cursor"></div>';
+	$('.slidenav').append(ball);
+	//l('entered');
+});
+
+$('.slidenav').on('mouseleave', function(){
+	$('.cursor').remove();
+});
 
 
 function l(m) {
