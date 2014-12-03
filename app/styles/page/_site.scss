@@ -1,3 +1,34 @@
+::selection { background: black; color: white; }
+::-moz-selection { background: black; color: white; }
+
+#intro {
+
+	background: black no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	position: relative;
+
+	height: em(350);
+	
+	h1 {
+		position: absolute;
+		left: 35%;
+		color: white;
+		bottom: em(25);
+		font-size: em(33);
+		font-style: italic;
+		line-height: 1em;
+		letter-spacing: -0.5px;
+	}
+
+	img {
+		opacity: .3;
+	}
+
+}
+
 .left {
 	width: 35%;
 	position: absolute;
@@ -5,13 +36,13 @@
 	padding-left: 5%;
 	padding: em(100) 0 0 5%;
 	z-index: 1;
+	@include transition(all ease .4s);
 
 	&.fixed {
-		.logo {
-			display: none;
-		}
 		position: fixed;
-		top: 0px;
+		top: 30px;
+		padding-top: em(140);
+
 	}
 	
 }
@@ -20,10 +51,21 @@
 	position: absolute;
 	top: em(-120);
 	display: block;
-	height: 100px;
+	height: 70px;
 	width: 200px;
-	background: url('../images/logo.png') no-repeat;
+	@include transition(all ease .4s);
 	
+	svg {
+		display: block;
+		width: 135px;
+	}
+	
+	.logoFill {
+		@include transition(all ease .4s);
+		fill: white;
+	}
+
+
 	a {
 		display: block;
 		text-indent: -9999px;
@@ -40,7 +82,17 @@
 		border-top-right-radius: 25px;
 		border-bottom-right-radius: 25px;
 	}
+	&.inview {
+		opacity: 1;
+		display: block;
+		top: 30px;
+		margin-top: 0px;
+		
+		.logoFill {
+			fill: black;
+		}
 
+	}
 }
 
 
@@ -98,34 +150,6 @@
 }
 
 
-#intro {
-
-	background: black no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	position: relative;
-
-	height: em(325);
-	
-	h1 {
-		position: absolute;
-		left: 35%;
-		color: white;
-		bottom: em(25);
-		font-size: em(33);
-		font-style: italic;
-		line-height: 1em;
-		letter-spacing: -0.5px;
-	}
-
-	img {
-		opacity: .3;
-	}
-
-}
-
 
 #about {
 	padding: em(100) 20% em(120) 0;
@@ -148,12 +172,15 @@
 
 	.slides {
 
-		li {
+		div {
 
 		}
 
 		img {
-
+			margin: 0 !important;
+		}
+		.slick-slide {
+			margin: 0 !important;
 		}
 	}
 	.info, .buy {
