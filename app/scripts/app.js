@@ -36,6 +36,13 @@ $(document).ready(function(){
 //	$('#intro').css('background-image', headerImages[0])
 
 
+	// check if its a touch device then add class to the prints so prices and 'add to cart' button are visible
+	if($('html').hasClass('touch')) {
+
+		$('.print').addClass('touch');
+		console.log('touchy');
+	}
+
 });
 
 
@@ -54,6 +61,8 @@ $(window).load(function(){
 		'height' : sH,
 		'margin-top' : -sH
 	});
+
+
 
 });
 
@@ -88,61 +97,53 @@ $(window).on('scroll', function(e){
 		$('.left').removeClass('fixed');
 		$('.logo').removeClass('inview');
 	}
-
-	var num = sP / 10;
-
-	// $('.logo').css({
-	// 	'margin-top' : -num,
-	// 	'opacity' : 1 - num/30
-	// });
-
-	// $('#intro h1').css({
-	// 	'margin-bottom' : num,
-	// 	'opacity' : 1 - num/30
-	// });
 });
 
-$('.slidenav').on('mousemove', function(e){
-	//l(e.clientX + ' ' + e.clientY);
-	$('.cursor').css({
-		'left' : e.offsetX,
-		'top' : e.offsetY
-	});
-	var halfWidth = Math.floor($(this).width() / 2);
-
-	// right arrow if over left side
-	if (e.offsetX > halfWidth) {
-		$(this).addClass('right');
-	} else {
-		$(this).removeClass('right');
-	}
-
-});
-
-$('.slidenav').on('click', function(e){
-	var halfWidth = Math.floor($(this).width() / 2);
-	l(e.offsetX);
-	
-	//if cursor is in the left half run prev slide otherwise run next click
-	
-	if (e.offsetX > halfWidth)  {
-		$('.slides').slickNext();
-	} else {
-		$('.slides').slickPrev();
+$('.slidenav').on({
+	mousemove: function(e){
+		$('.cursor').css({
+			'left' : e.offsetX,
+			'top' : e.offsetY
+		});
+		var halfWidth = Math.floor($(this).width() / 2);
+		// right arrow if over left side
+		if (e.offsetX > halfWidth) {
+			$(this).addClass('right');
+		} else {
+			$(this).removeClass('right');
+		}
+	},
+	click: function(e){
+		var halfWidth = Math.floor($(this).width() / 2);
+		l(e.offsetX);
+		
+		//if cursor is in the left half run prev slide otherwise run next click
+		
+		if (e.offsetX > halfWidth)  {
+			$('.slides').slickNext();
+		} else {
+			$('.slides').slickPrev();
+		}
+	},
+	mouseenter: function(){
+		var ball = '<div class="cursor"></div>';
+		$('.slidenav').append(ball);
+		//l('entered');
+	},
+	mouseleave: function(){
+		$('.cursor').remove();
 	}
 });
 
 
-
-$('.slidenav').on('mouseenter', function(){
-	var ball = '<div class="cursor"></div>';
-	$('.slidenav').append(ball);
-	//l('entered');
+$('.credit a').on({
+	mousemove: function(){
+		$(this).css({
+			'cursor': 'help'
+		});
+	}
 });
 
-$('.slidenav').on('mouseleave', function(){
-	$('.cursor').remove();
-});
 
 
 function l(m) {

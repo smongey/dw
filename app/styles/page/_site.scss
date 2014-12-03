@@ -152,24 +152,27 @@
 
 
 #about {
-	padding: em(100) 20% em(120) 0;
+	padding: em(100) 20% em(20) 0;
 	h3 {
 		font-family: $serif;
 		font-size: em(33);
 		// line-height: 1.1em;
+		@media only screen and (max-width: 800px) {
+			font-size: em(28);
+		}
 	}
 
 }
 
 
 #shop {
-
+	padding-top: em(80);
 }
 
 .book {
 	margin-left: -30%;
 	width: calc(100% + 100px);
-
+	float: left;
 	.slides {
 
 		div {
@@ -190,6 +193,9 @@
 		width: 50%;
 		height: 100px;
 		position: relative;
+		@media only screen and (max-width: 800px) {
+			display: none;
+		}
 
 		&:hover {
 			cursor: none;
@@ -215,13 +221,40 @@
 	}
 
 
-	.info, .buy {
+	.info {
 		padding-left: calc(30% - 30px);
+		float: left;
+		width: 70%;
+		//background: grey;
 
 		h4 {
-			font: 28px/32px $serif;
+			font: 32px/38px $serif;
+			margin-bottom: em(10);
+		}
+		p {
+			padding-right: em(55);
+			font: 20px/26px $serif;
+			color: black;
+			@media only screen and (max-width: 800px) {
+				padding-right: 0;
+			}
 		}
 
+	}
+	.buy {
+		float: left;
+		width: 30%;
+
+		.price, .add {
+			display: block;
+			font: 32px/38px $serif;
+			webkit-font-feature-settings: "onum";
+			font-feature-settings: "onum";
+		}
+		.add {
+			color: black;
+			font-style: italic;
+		}
 	}
 
 }
@@ -230,9 +263,32 @@
 .prints {
 	margin-left: -30%;
 	width: calc(100% + 100px);
+	float: left;
+	padding-top: em(80);
+	h3 {
+		font: 32px/38px $serif;
+		display: block;
+		float: left;
+		width: 100%;
+		padding-left: calc(30% - 30px);
+		margin-bottom: em(20);
+		font-style: italic;
+	}
 
 	.info {
 		padding-left: calc(30% - 30px);
+		float: left;
+		width: 70%;
+		padding-top: em(30);
+		padding-bottom: em(80);
+		p {
+			padding-right: em(55);
+			font: 20px/26px $serif;
+			color: black;
+			@media only screen and (max-width: 800px) {
+				padding-right: 0;
+			} 
+		}
 	}
 
 }
@@ -243,25 +299,47 @@
 	width: 50%;
 	float: left;
 	position: relative;
-	padding-right: 10px;
-
-	img { 
-		
-
-	}
+	padding: 0 em(20) em(15) 0;
+	overflow: hidden;
 
 	.buy {
 		position: absolute;
-		top: 0px;
-		left: 0px;
+		bottom: em(10);
+		left: em(15);
+		font: 19px/24px $serif;
+		@include transition(all ease .4s);
+		color: #333;
 
-		span.price {
-
+		.title {
+			display: block;
+			color: black;
 		}
-
-		a.add {
-
+		.price {
+			opacity: 0;
+			@include transition(all ease .3s .1s);
 		}
+		.add {
+			opacity: 0;
+			@include transition(all ease .3s .2s);
+			color: #333;
+			font-style: italic;
+			&:hover {
+				color: black;
+			}
+		}
+		
+	}
+	&:hover, &.touch {
+		.buy {
+			bottom: em(30);
+		}
+		.price {
+			opacity: 1;
+		}
+		.add {
+			opacity: 1;
+		}		
+
 	}
 
 }
@@ -271,9 +349,20 @@ footer {
 	padding: em(50) 0;
 	width: 65%;
 	float: right;
-	background: red;
-
+	
 	span {
 		display: block;
+		font: 19px/24px $serif;
+		color: #333;
+
+	}
+	.credit {
+		font-style: italic;
+	}
+	a {
+		color: #333;
+	}
+	a:hover  {
+		color: black;
 	}
 }
