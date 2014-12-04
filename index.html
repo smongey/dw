@@ -12,7 +12,7 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link rel="stylesheet" href="http://smongey.github.io/dw/styles/a18c.screen.css">
+    <link rel="stylesheet" href="http://smongey.github.io/dw/styles/2944.screen.css">
 
 
     <script src="http://smongey.github.io/dw/scripts/d1e4.modernizr.js"></script>
@@ -144,7 +144,13 @@
 						<li class="type"><a href="#prints">Prints</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Cart (1)</a></li>
+				<li>
+					<a href="#" class="snipcart-checkout">Cart
+						<span class="snipcart-summary">
+	    				<span class="snipcart-total-items"></span>
+	    				</span>
+    				</a>
+				</li>
 			</ul>
 		</nav>
 
@@ -179,7 +185,17 @@
 		</div>
 		<div class="buy">
 			<span class="price">&euro;15</span>
-			<a href="#cart" class="add">Add to cart</a>
+			<!-- <a href="#cart" class="add">Add to cart</a> -->
+			<a href="#"
+			    class="add snipcart-add-item" 
+			    data-item-id="1" 
+			    data-item-name="Burnside" 
+			    data-item-price="15.00" 
+			    data-item-weight="20" 
+			    data-item-url="http://www.driftwoodeditions.com/" 
+			    data-item-description="Richard Gilligan">
+			    Add to cart
+			</a>
 		</div>
 	</div>
 
@@ -192,7 +208,14 @@
 			<div class="buy">
 				<span class="title">Print Title</span>
 				<span class="price">&euro;60</span>
-				<a href="#cart" class="add">Add to cart</a>
+				<a href="#cart" 
+			    class="add snipcart-add-item" 
+			    data-item-id="2" 
+			    data-item-name="Print 1" 
+			    data-item-price="60.00" 
+			    data-item-weight="20" 
+			    data-item-url="http://www.driftwoodeditions.com/" 
+			    data-item-description="Richard Gilligan">Add to cart</a>
 			</div>
 		</div>
 
@@ -234,10 +257,10 @@
 
     
     <footer>
-	<span>All content &copy; 2014 Driftwood Editions</span>
+	<span class="copy">All content &copy; 2014 Driftwood Editions</span>
 	<span class="credit"><a href="http://bypost.io/">Designed and built by Post</a></span>
 </footer>
-    <script src="http://smongey.github.io/dw/scripts/5144.app.js"></script>
+    <script src="http://smongey.github.io/dw/scripts/dc4f.app.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
