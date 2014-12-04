@@ -18,8 +18,7 @@ $(document).ready(function(){
 
 	$('.slides').slick({
 		//setting-name: setting-value
-		arrows: false,
-        centerPadding: '10px',
+		arrows: false
 	});
 
 	$('.slides').on('mouseenter', function(){
@@ -28,12 +27,7 @@ $(document).ready(function(){
 		});
 	});
 
-	// $('.slide-next').on('click', function(){
-	// 	$('.slides').slickNext();
-
-	// });
-
-//	$('#intro').css('background-image', headerImages[0])
+	$('#intro').css('background-image', headerImages[0])
 
 
 	// check if its a touch device then add class to the prints so prices and 'add to cart' button are visible
@@ -44,8 +38,6 @@ $(document).ready(function(){
 	}
 
 });
-
-
 
 
 $(window).load(function(){
@@ -59,14 +51,43 @@ $(window).load(function(){
 	$('.slidenav').css({
 		'width' : sW,
 		'height' : sH,
-		'margin-top' : -sH
+		'margin-top' : -(sH + 30)
 	});
 
 
-
+	if($('.snipcart-total-items').text() == '0') {
+		l('Cart: Empty');
+		$('.snipcart-total-items').removeClass('visible');
+	} else {
+		l('Cart: Full');
+		$('.snipcart-total-items').addClass('visible');
+	}
 });
 
 
+Snipcart.execute('bind', 'item.added', function(item){
+
+	l(item);
+	if(item) {
+		l('full');
+		$('.snipcart-total-items').addClass('visible');
+	} else {
+		l('empty');
+		$('.snipcart-total-items').removeClass('visible');
+	}
+
+});
+
+Snipcart.execute('bind', 'cart.closed', function() {
+	l('cart closed');
+	if($('.snipcart-total-items').text() == '0') {
+		// l('empty');
+		$('.snipcart-total-items').removeClass('visible');
+	} else {
+		// l('moneh');
+		$('.snipcart-total-items').addClass('visible');
+	}
+});
 
 
 $('a.shop').on('click', function(e){
@@ -85,17 +106,27 @@ $('a.shop').on('click', function(e){
 });
 
 
+
+$('a.add').on('click', function(e){ 
+	l('clicked yo');
+});
+
+
 var headHeight = $('#intro').height();
 
 $(window).on('scroll', function(e){
-	var sP = e.currentTarget.pageYOffset;
-	//console.log(headHeight);
-	if(sP >= headHeight) {
-		$('.left').addClass('fixed');
-		$('.logo').addClass('inview');
-	} else {
-		$('.left').removeClass('fixed');
-		$('.logo').removeClass('inview');
+	if(!$('html').hasClass('touch')) {
+
+		var sP = e.currentTarget.pageYOffset;
+		//console.log(headHeight);
+		if(sP >= headHeight) {
+			$('.left').addClass('fixed');
+			$('.logo').addClass('inview');
+		} else {
+			$('.left').removeClass('fixed');
+			$('.logo').removeClass('inview');
+		}
+
 	}
 });
 
@@ -107,73 +138,37 @@ $('.slidenav').on({
 		});
 		var halfWidth = Math.floor($(this).width() / 2);
 		var halfHeight = Math.floor($(this).height() / 2);
-		// right arrow if over left side
-		// if (e.offsetX > halfWidth) {
-		// 	$(this).addClass('bottom');
-		// } else {
-		// 	$(this).removeClass('bottom');
-		// }
 
 		if (e.offsetX > halfWidth) {
 
 			if (e.offsetY > halfHeight) {
-				l('bottom right');
+				//l('bottom right');
 				$('.cursor').css({
 					'transform' : 'rotate(180deg)'
 				});
 			} else {
-				l('top right');
+				//l('top right');
 				$('.cursor').css({
 					'transform' : 'rotate(180deg)'
 				});
 			}
-
-			// l('right');
-			// $(this).addClass('bottom');
 		
 		} else {
 
 			if (e.offsetY > halfHeight) {
-				l('bottom left');
+				//l('bottom left');
 				$('.cursor').css({
 					'transform' : 'rotate(360deg)'
 				});
 			} else {
-				l('top left');
+				//l('top left');
 				$('.cursor').css({
 					'transform' : 'rotate(0deg)'
 				});
 			}
-		
-			// l('left');
-			// $(this).removeClass('bottom');
 
 		}
 
-
-
-		// if (e.offsetY > halfHeight) {
-		// 	//l('bottom');
-		// 	if (e.offsetX > halfWidth) {
-		// 		l('bottom right');
-		// 		$(this).removeClass('top');
-		// 		$(this).addClass('bottom');
-		// 	} else {
-		// 		l('bottom left');
-		// 		$(this).removeClass('top');
-		// 		$(this).removeClass('bottom');
-		// 	}
-		// } else {
-		// 	if (e.offsetX > halfWidth) {
-		// 		l('top right');
-		// 		$(this).removeClass('bottom');
-		// 		$(this).addClass('top');
-		// 	} else {
-		// 		l('top left');
-		// 		$(this).removeClass('bottom');
-		// 		$(this).removeClass('top');
-		// 	}
-		// }
 	},
 	click: function(e){
 		var halfWidth = Math.floor($(this).width() / 2);
@@ -201,7 +196,7 @@ $('.slidenav').on({
 $('.credit a').on({
 	mousemove: function(){
 		$(this).css({
-			'cursor': 'url(images/handy.png) 10 10, auto'
+			'cursor': 'url(../images/thumby.png) 10 10, auto'
 		});
 	}
 });
