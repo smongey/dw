@@ -201,21 +201,20 @@
 			cursor: none;
 		}
 
-		&.right {
+		&.bottom {
 			.cursor {
-				@include transform(rotate(0deg));
+				@include transform(scaleX(-1));	
 			}
-		}
+		}	
 		.cursor {
 			position: absolute;
 			width: 5px;
 			height: 5px;
 			pointer-events: none;
-			border-left: 17px solid black;
+			border-right: 17px solid black;
 			border-top: 7px solid transparent;
 			border-bottom: 7px solid transparent;	
-			@include transition(transform ease .2s);
-			@include transform(rotate(180deg));
+			@include transition(transform ease .4s);
 		}		
 
 	}
@@ -317,6 +316,7 @@
 		.price {
 			opacity: 0;
 			@include transition(all ease .3s .1s);
+			padding-right: em(10);
 		}
 		.add {
 			opacity: 0;
