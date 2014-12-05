@@ -5,10 +5,15 @@ $(document).ready(function(){
 	$(intro[1]).hide();
 	$(intro[2]).hide();
 
-	var headerImages = ['http://placehold.it/1200x500', 'http://placehold.it/1200x500/eee', 'http://placehold.it/1200x500/ccc']
-
+	var headerImages = ['./images/header1.jpg']
 
 	console.log(headerImages[0]);
+
+	var imageAddress = 'url(' + headerImages[0] + ') no-repeat'
+
+	$('#intro').css({
+		'background-image' : 'url(/images/header1.jpg)'
+	});
 
 	$.localScroll({
 		duration: 600,
@@ -65,18 +70,32 @@ $(window).load(function(){
 });
 
 
+$('.add').on('click', function(e){
+
+	$(this).empty().append('Adding...');
+	$(this).delay(1000).promise().done(function(){
+		$(this).empty().append('Added');
+	});
+
+	setTimeout(function(){
+		$('.add').empty().append('Add to cart');
+	}, 3000)
+
+});
+
 Snipcart.execute('bind', 'item.added', function(item){
 
-	l(item);
+	//l(item);
 	if(item) {
-		l('full');
+		//l('full');
 		$('.snipcart-total-items').addClass('visible');
 	} else {
-		l('empty');
+		//l('empty');
 		$('.snipcart-total-items').removeClass('visible');
 	}
 
 });
+
 
 Snipcart.execute('bind', 'cart.closed', function() {
 	l('cart closed');
@@ -88,6 +107,8 @@ Snipcart.execute('bind', 'cart.closed', function() {
 		$('.snipcart-total-items').addClass('visible');
 	}
 });
+
+
 
 
 $('a.shop').on('click', function(e){
@@ -105,11 +126,6 @@ $('a.shop').on('click', function(e){
 	}
 });
 
-
-
-$('a.add').on('click', function(e){ 
-	l('clicked yo');
-});
 
 
 var headHeight = $('#intro').height();
