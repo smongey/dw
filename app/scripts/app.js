@@ -5,15 +5,14 @@ $(document).ready(function(){
 	$(intro[1]).hide();
 	$(intro[2]).hide();
 
-	var headerImages = ['./images/header1.jpg']
-
-	console.log(headerImages[0]);
-
-	var imageAddress = 'url(' + headerImages[0] + ') no-repeat'
+	var headerImages = ['/images/header1.jpg', '/images/header2.jpg', '/images/header3.jpg', '/images/header4.jpg', '/images/header5.jpg', '/images/header6.jpg', '/images/header7.jpg', '/images/header8.jpg']
+	var randomer = Math.floor((Math.random() * headerImages.length) + 1);
+	var imageAddress = 'url(' + headerImages[randomer] + ')'
 
 	$('#intro').css({
-		'background-image' : 'url(/images/header1.jpg)'
+		'background-image' : imageAddress
 	});
+
 
 	$.localScroll({
 		duration: 600,
@@ -25,6 +24,8 @@ $(document).ready(function(){
 		//setting-name: setting-value
 		arrows: false
 	});
+
+
 
 	$('.slides').on('mouseenter', function(){
 		$(this).css({
@@ -67,6 +68,14 @@ $(window).load(function(){
 		l('Cart: Full');
 		$('.snipcart-total-items').addClass('visible');
 	}
+
+	setTimeout(function(){
+		$('#load').addClass('hide');
+		$('body').animate({
+			'margin-top' : '0'
+		}, 600, 'easeOutQuart');
+	}, 1000);
+
 });
 
 
