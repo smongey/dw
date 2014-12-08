@@ -62,13 +62,13 @@ $(window).load(function () {
 	
 
 
-	if ($('.snipcart-total-items').text() === '0') {
+	if ($('.snipcart-total-items').text() == '0' || $('.snipcart-total-items').text() == '') {
 		l('Cart: Empty');
-		// l($('.snipcart-total-items').text());
+		l($('.snipcart-total-items').text());
 		$('.snipcart-total-items').removeClass('visible');
 	} else {
 		l('Cart: Full');
-		// l($('.snipcart-total-items').text());
+		l($('.snipcart-total-items').text());
 		$('.snipcart-total-items').addClass('visible');
 	}
 
@@ -114,7 +114,7 @@ Snipcart.execute('bind', 'item.added', function (item) {
 Snipcart.execute('bind', 'cart.closed', function () {
 	'use strict';
 	l('cart closed');
-	if ($('.snipcart-total-items').text() === '0') {
+	if ($('.snipcart-total-items').text() == '0' || $('.snipcart-total-items').text() == '') {
 		// l('empty');
 		$('.snipcart-total-items').removeClass('visible');
 	} else {
