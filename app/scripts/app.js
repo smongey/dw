@@ -1,18 +1,14 @@
-$(document).ready(function(){
-	
+function l(m) {
+	'use strict';
+	console.log(m);
+}
+
+$(document).ready(function () {
+	'use strict';
+
 	var intro = $('#intro ul > li');
-	console.log();
 	$(intro[1]).hide();
 	$(intro[2]).hide();
-
-	var headerImages = ['/images/header1.jpg', '/images/header2.jpg', '/images/header3.jpg', '/images/header4.jpg', '/images/header5.jpg', '/images/header6.jpg', '/images/header7.jpg', '/images/header8.jpg']
-	var randomer = Math.floor((Math.random() * headerImages.length) + 1);
-	var imageAddress = 'url(' + headerImages[randomer] + ')'
-
-	$('#intro').css({
-		'background-image' : imageAddress
-	});
-
 
 	$.localScroll({
 		duration: 600,
@@ -25,28 +21,31 @@ $(document).ready(function(){
 		arrows: false
 	});
 
-
-
-	$('.slides').on('mouseenter', function(){
+	$('.slides').on('mouseenter', function () {
 		$(this).css({
-			'margin-left':'-10px'
+			'margin-left': '-10px'
 		});
 	});
 
-	$('#intro').css('background-image', headerImages[0])
-
-
 	// check if its a touch device then add class to the prints so prices and 'add to cart' button are visible
-	if($('html').hasClass('touch')) {
-
+	if ($('html').hasClass('touch')) {
 		$('.print').addClass('touch');
-		console.log('touchy');
+		//console.log('touchy');
 	}
 
 });
 
 
-$(window).load(function(){
+$(window).load(function () {
+	'use strict';
+
+	var headerImages = ['/images/header1.jpg', '/images/header2.jpg', '/images/header3.jpg', '/images/header4.jpg', '/images/header5.jpg', '/images/header6.jpg', '/images/header7.jpg', '/images/header8.jpg'];
+	var randomer = Math.floor((Math.random() * headerImages.length) + 1);
+	var imageAddress = 'url(' + headerImages[randomer] + ')';
+
+	$('#intro').css({
+		'background-image' : imageAddress
+	});
 
 	var sH = $('.slides').outerHeight(),
 		sW = $('.slides').outerWidth();
@@ -60,16 +59,20 @@ $(window).load(function(){
 		'margin-top' : -(sH + 30)
 	});
 
+	
 
-	if($('.snipcart-total-items').text() == '0') {
+
+	if ($('.snipcart-total-items').text() === '0') {
 		l('Cart: Empty');
+		// l($('.snipcart-total-items').text());
 		$('.snipcart-total-items').removeClass('visible');
 	} else {
 		l('Cart: Full');
+		// l($('.snipcart-total-items').text());
 		$('.snipcart-total-items').addClass('visible');
 	}
 
-	setTimeout(function(){
+	setTimeout(function () {
 		$('#load').addClass('hide');
 		$('body').animate({
 			'margin-top' : '0'
@@ -79,23 +82,25 @@ $(window).load(function(){
 });
 
 
-$('.add').on('click', function(e){
+$('.add').on('click', function () {
+
+	'use strict';
 
 	$(this).empty().append('Adding...');
-	$(this).delay(1000).promise().done(function(){
+	$(this).delay(1000).promise().done(function () {
 		$(this).empty().append('Added');
 	});
 
-	setTimeout(function(){
+	setTimeout(function () {
 		$('.add').empty().append('Add to cart');
-	}, 3000)
+	}, 3000);
 
 });
 
-Snipcart.execute('bind', 'item.added', function(item){
-
+Snipcart.execute('bind', 'item.added', function (item) {
+	'use strict';
 	//l(item);
-	if(item) {
+	if (item) {
 		//l('full');
 		$('.snipcart-total-items').addClass('visible');
 	} else {
@@ -106,9 +111,10 @@ Snipcart.execute('bind', 'item.added', function(item){
 });
 
 
-Snipcart.execute('bind', 'cart.closed', function() {
+Snipcart.execute('bind', 'cart.closed', function () {
+	'use strict';
 	l('cart closed');
-	if($('.snipcart-total-items').text() == '0') {
+	if ($('.snipcart-total-items').text() === '0') {
 		// l('empty');
 		$('.snipcart-total-items').removeClass('visible');
 	} else {
@@ -120,17 +126,18 @@ Snipcart.execute('bind', 'cart.closed', function() {
 
 
 
-$('a.shop').on('click', function(e){
+$('a.shop').on('click', function (e) {
+	'use strict';
 	e.preventDefault();
 	if ($('ul.sub').hasClass('hidden')) {
 
 		$('ul.sub').removeClass('hidden');
-		$('ul.sub').show(); 
+		$('ul.sub').show();
 
 	} else {
 
 		$('ul.sub').addClass('hidden');
-		$('ul.sub').hide(); 
+		$('ul.sub').hide();
 
 	}
 });
@@ -139,12 +146,13 @@ $('a.shop').on('click', function(e){
 
 var headHeight = $('#intro').height();
 
-$(window).on('scroll', function(e){
-	if(!$('html').hasClass('touch')) {
+$(window).on('scroll', function (e) {
+	'use strict';
+	if (!$('html').hasClass('touch')) {
 
 		var sP = e.currentTarget.pageYOffset;
-		//console.log(headHeight);
-		if(sP >= headHeight) {
+		
+		if (sP >= headHeight) {
 			$('.left').addClass('fixed');
 			$('.logo').addClass('inview');
 		} else {
@@ -156,7 +164,8 @@ $(window).on('scroll', function(e){
 });
 
 $('.slidenav').on({
-	mousemove: function(e){
+	mousemove: function (e) {
+		'use strict';
 		$('.cursor').css({
 			'left' : e.offsetX,
 			'top' : e.offsetY
@@ -195,39 +204,37 @@ $('.slidenav').on({
 		}
 
 	},
-	click: function(e){
+	click: function (e) {
+		'use strict';
 		var halfWidth = Math.floor($(this).width() / 2);
 		l(e.offsetX);
 		
 		//if cursor is in the left half run prev slide otherwise run next click
 		
-		if (e.offsetX > halfWidth)  {
+		if (e.offsetX > halfWidth) {
 			$('.slides').slickNext();
 		} else {
 			$('.slides').slickPrev();
 		}
 	},
-	mouseenter: function(){
+	mouseenter: function () {
+		'use strict';
 		var ball = '<div class="cursor"></div>';
 		$('.slidenav').append(ball);
 		//l('entered');
 	},
-	mouseleave: function(){
+	mouseleave: function () {
+		'use strict';
 		$('.cursor').remove();
 	}
 });
 
 
 $('.credit a').on({
-	mousemove: function(){
+	mousemove: function () {
+		'use strict';
 		$(this).css({
 			'cursor': 'url(../images/thumby.png) 10 10, auto'
 		});
 	}
 });
-
-
-
-function l(m) {
-	console.log(m)
-}
