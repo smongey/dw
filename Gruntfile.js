@@ -287,19 +287,19 @@ module.exports = function (grunt) {
           patterns: [
             {
               match: /("|'?)\/?styles\//g,
-              replacement: '$1http://smongey.github.io/dw/styles/'
+              replacement: '$1new/styles/'
             },
             {
               match: /("|'?)\/?js\//g,
-              replacement: '$1http://smongey.github.io/dw/js/'
+              replacement: '$1new/js/'
             },
             {
               match: /(<a[^>]*href="?)(\/)/g,
-              replacement: '$1http://smongey.github.io/dw/'
+              replacement: '$1new/'
             },
             {
               match: /(<form[^>]*action="?)(\/)/g,
-              replacement: '$1http://smongey.github.io/dw/'
+              replacement: '$1new/'
             }
           ]
         },
@@ -405,7 +405,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('deploy', [
     'default',
-    //'replace',
+    'replace',
     'buildcontrol'
   ]);
 
