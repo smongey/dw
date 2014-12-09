@@ -261,7 +261,7 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
-            '<%= yeoman.dist %>/scripts/**/*.js',
+            '<%= yeoman.dist %>/js/**/*.js',
             '<%= yeoman.dist %>/styles/**/*.css',
             //'<%= yeoman.dist %>/images/**/*.{gif,jpg,jpeg,png,svg,webp}',
             '<%= yeoman.dist %>/fonts/**/*.{eot*,otf,svg,ttf,woff}'
@@ -290,8 +290,8 @@ module.exports = function (grunt) {
               replacement: '$1http://smongey.github.io/dw/styles/'
             },
             {
-              match: /("|'?)\/?scripts\//g,
-              replacement: '$1http://smongey.github.io/dw/scripts/'
+              match: /("|'?)\/?js\//g,
+              replacement: '$1http://smongey.github.io/dw/js/'
             },
             {
               match: /(<a[^>]*href="?)(\/)/g,
@@ -306,7 +306,7 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            src: ['dist/**/*.html', 'dist/scripts/*.js']
+            src: ['dist/**/*.html', 'dist/js/*.js']
           }
         ]
       }
@@ -317,9 +317,9 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/**/*.js',
+        '<%= yeoman.app %>/js/**/*.js',
         'test/spec/**/*.js',
-        '!<%= yeoman.app %>/scripts/vendor/**/*'
+        '!<%= yeoman.app %>/js/vendor/**/*'
       ]
     },
     csscss: {
