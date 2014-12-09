@@ -295,7 +295,7 @@ module.exports = function (grunt) {
             },
             {
               match: /(<a[^>]*href="?)(\/)/g,
-              replacement: '$1/new/'
+              replacement: '$1'
             }
             // ,
             // {
