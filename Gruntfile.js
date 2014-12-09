@@ -296,11 +296,12 @@ module.exports = function (grunt) {
             {
               match: /(<a[^>]*href="?)(\/)/g,
               replacement: '$1new/'
-            },
-            {
-              match: /(<form[^>]*action="?)(\/)/g,
-              replacement: '$1new/'
             }
+            // ,
+            // {
+            //   match: /(<form[^>]*action="?)(\/)/g,
+            //   replacement: '$1new/'
+            // }
           ]
         },
         files: [
