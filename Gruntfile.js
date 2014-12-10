@@ -287,11 +287,11 @@ module.exports = function (grunt) {
           patterns: [
             {
               match: /("|'?)\/?styles\//g,
-              replacement: '$1/new/styles/'
+              replacement: '$1/styles/'
             },
             {
               match: /("|'?)\/?js\//g,
-              replacement: '$1/new/js/'
+              replacement: '$1/js/'
             },
             {
               match: /(<a[^>]*href="?)(\/)/g,
