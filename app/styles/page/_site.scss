@@ -168,7 +168,7 @@ body {
 .side {
 	
 	@include transition(all ease .4s);
-	
+
 	@media only screen and (max-width: $phone) { 
 		display: none;
 
@@ -563,12 +563,15 @@ body {
 	&:hover, &.touch {
 		.buy {
 			bottom: em(30);
+			color: black;
 		}
 		.price {
 			opacity: 1;
+			color: black;
 		}
 		.add {
 			opacity: 1;
+			color: black;
 		}		
 	}
 	&:hover {
