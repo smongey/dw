@@ -561,6 +561,17 @@ body {
 		
 	}
 	&:hover, &.touch {
+		.buy {
+			bottom: em(30);
+		}
+		.price {
+			opacity: 1;
+		}
+		.add {
+			opacity: 1;
+		}		
+	}
+	&.touch {
 		.title { 
 			color: black;
 		}

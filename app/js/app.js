@@ -29,8 +29,10 @@ $(document).ready(function () {
 
 	// check if its a touch device then add class to the prints so prices and 'add to cart' button are visible
 	if ($('html').hasClass('touch')) {
+
 		$('.print').addClass('touch');
 		//console.log('touchy');
+		$('<a href="#" style="position:fixed; z-index:10; top:20px; right: 20px; color:#333;" class="snipcart-checkout">Cart</a>').appendTo('#about');
 	}
 
 	if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
