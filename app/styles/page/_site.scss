@@ -561,6 +561,9 @@ body {
 		
 	}
 	&:hover, &.touch {
+		.title { 
+			color: black;
+		}
 		.buy {
 			bottom: em(30);
 			color: black;
