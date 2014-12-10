@@ -33,6 +33,10 @@ $(document).ready(function () {
 		//console.log('touchy');
 	}
 
+	if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+		$('.slidenav').hide();
+	}
+
 });
 
 
@@ -166,37 +170,63 @@ $(window).on('scroll', function (e) {
 $('.slidenav').on({
 	mousemove: function (e) {
 		'use strict';
-		$('.cursor').css({
-			'left' : e.offsetX,
-			'top' : e.offsetY
-		});
+
+
+		
+		if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+
+			$('.cursor').css({
+				'display' : 'none'
+			});
+			console.log('firefox');
+
+		} else {
+			
+			console.log('NOT firefox');
+
+			var x = e.offsetX;
+    	    var y = e.offsetY;
+
+
+			$('.cursor').css({
+				'left' : x,
+				'top' : y
+			});
+		}
+
 		var halfWidth = Math.floor($(this).width() / 2);
 		var halfHeight = Math.floor($(this).height() / 2);
 
-		if (e.offsetX > halfWidth) {
+		// l('What ' + x);
 
-			if (e.offsetY > halfHeight) {
+		if (x > halfWidth) {
+
+			if (y > halfHeight) {
 				//l('bottom right');
 				$('.cursor').css({
+					'-moz-transform' : 'rotate(180deg)',
 					'transform' : 'rotate(180deg)'
 				});
 			} else {
 				//l('top right');
 				$('.cursor').css({
+					'-moz-transform' : 'rotate(180deg)',
 					'transform' : 'rotate(180deg)'
 				});
 			}
 		
 		} else {
 
-			if (e.offsetY > halfHeight) {
+			if (y > halfHeight) {
 				//l('bottom left');
 				$('.cursor').css({
+					'-moz-transform' : 'rotate(360deg)',
 					'transform' : 'rotate(360deg)'
 				});
 			} else {
 				//l('top left');
 				$('.cursor').css({
+					'-moz-transform' : 'rotate(0deg)',
 					'transform' : 'rotate(0deg)'
 				});
 			}
@@ -206,12 +236,16 @@ $('.slidenav').on({
 	},
 	click: function (e) {
 		'use strict';
+
+		var x = (e.offsetX || e.clientX - $(e.target).offset().left);
+        var y = (e.offsetY || e.clientY - $(e.target).offset().top);
+
 		var halfWidth = Math.floor($(this).width() / 2);
 		l(e.offsetX);
 		
 		//if cursor is in the left half run prev slide otherwise run next click
 		
-		if (e.offsetX > halfWidth) {
+		if (x > halfWidth) {
 			$('.slides').slickNext();
 		} else {
 			$('.slides').slickPrev();

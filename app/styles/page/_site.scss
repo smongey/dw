@@ -167,9 +167,19 @@ body {
 
 .side {
 	
+	@include transition(all ease .4s);
+	
 	@media only screen and (max-width: $phone) { 
 		display: none;
-		background: red;
+
+		a.snipcart-checkout {
+			display: block;
+			position: fixed;
+			top: em(20);
+			right: em(20);
+			z-index: 9999;
+		}
+
 	}
 	nav {
 		font: 28px/32px $serif;
@@ -187,9 +197,22 @@ body {
 					color: #666;
 				}
 			}
+		
+			@media only screen and (max-width: $phone) { 
+				li a.snipcart-checkout {
+					display: block;
+					position: fixed;
+					bottom: em(20);
+					right: em(20);
+					z-index: 9999;
+					background: red;
+				}
+			}
+
+
 		}
 	}
-	
+
 	.snipcart-total-items {
 		display: inline-block;
 		font-family: monospace;
@@ -481,9 +504,29 @@ body {
 		width: 100%;
 		padding: 0 0 em(30) 0;
 	}
+	img {
+		background: black;
+		@include transition(all ease .2s);
+	}
+
+
+	&:after {
+		opacity: 0;
+		content: ' ';
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		background: black;
+		margin: 0 em(20) em(15) 0;
+		@include transition(all ease .2s);
+	}
 
 	.buy {
 		position: absolute;
+		z-index: 1;
 		bottom: em(10);
 		left: em(15);
 		font: 19px/24px $serif;
@@ -498,20 +541,21 @@ body {
 
 		.title {
 			display: block;
-			color: black;
+			color: white;
 		}
 		.price {
 			opacity: 0;
 			@include transition(all ease .3s .1s);
 			padding-right: em(10);
+			color: white;
 		}
 		.add {
 			opacity: 0;
 			@include transition(all ease .3s .2s);
-			color: #333;
+			color: white;
 			font-style: italic;
 			&:hover {
-				color: black;
+				color: white;
 			}
 		}
 		
@@ -526,6 +570,22 @@ body {
 		.add {
 			opacity: 1;
 		}		
+	}
+	&:hover {
+		
+		&:after {
+			opacity: .5;
+			content: ' ';
+			display: block;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			background: rgba(0,0,0,.5);
+			margin: 0 em(20) em(20) 0;
+		}
+
 
 	}
 
