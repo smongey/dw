@@ -88,18 +88,21 @@ $(window).load(function () {
 });
 
 
-$('.add').on('click', function () {
-
+$('.add').on('click', function (e) {
 	'use strict';
 
-	$(this).empty().append('Adding...');
-	$(this).delay(1000).promise().done(function () {
-		$(this).empty().append('Added');
-	});
+	if (!$(this).hasClass('soldout')) {
 
-	setTimeout(function () {
-		$('.add').empty().append('Add to cart');
-	}, 3000);
+		$(this).empty().append('Adding...');
+		$(this).delay(1000).promise().done(function () {
+			$(this).empty().append('Added');
+		});
+
+		setTimeout(function () {
+			$('.add').empty().append('Add to cart');
+		}, 3000);
+
+	}
 
 });
 
