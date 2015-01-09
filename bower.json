@@ -11,5 +11,8 @@
     "jquery.scrollTo": "~1.4.14",
     "jquery.localScroll": "~1.3.5",
     "jquery.easing": "~1.3.1"
+  },
+  "devDependencies": {
+    "photoswipe": "https://github.com/dimsemenov/PhotoSwipe.git#~4.0.3"
   }
 }
